@@ -1,0 +1,29 @@
+<h1>Songs</h1>
+<%= form_for(@song) do |f| %>
+  <% @songs.each do |song| %>
+    <%= f.label :title %>
+    <%= song.title %>
+
+    <%= f.label :artist_name %>
+    <%= song.artist_name %>
+
+    <%= f.label :genre %>
+    <%= song.genre %>
+
+    <%= f.label :release_year %>
+    <%= f.text_field :release_year %>
+
+    <%= f.hidden :released %>
+
+    <%= f.submit %>
+  <% end %>
+<% end %>
+
+
+
+<% @songs.each do |song| %>
+<div class="song">
+  <span><%= song.title %></span>
+  <%= link_to "Delete", song, method: :delete, data: { confirm: "Really?" } %>
+</div>
+<% end %>
