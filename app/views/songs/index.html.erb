@@ -1,29 +1,38 @@
-<h1>Songs</h1>
-<%= form_for(@song) do |f| %>
+<h1>Song Releases</h1>
+  <div class="song">
   <% @songs.each do |song| %>
-    <%= f.label :title %>
-    <%= song.title %>
+    <%= form_for(song) do |f| %>
+    <table>
+      <thead>
+        <ul>
+          <li>
+            <h3><%= f.label :title %>:
+            <%= song.title %></h3>
+          </li>
+        </ul>
+      </thead>
+      <tbody style="cell_padding = 100;">
+        <tr>
+          <td width = 100></td>
+          <td>
 
-    <%= f.label :artist_name %>
-    <%= song.artist_name %>
-
-    <%= f.label :genre %>
-    <%= song.genre %>
-
-    <%= f.label :release_year %>
-    <%= f.text_field :release_year %>
-
-    <%= f.hidden :released %>
-
-    <%= f.submit %>
+            <%= f.label "Artist Name: " %>
+            <%= song.artist_name %><br>
+            <%= f.label "Genre: " %>
+            <%= song.genre %><br>
+            <%= f.label "Released: " %>
+            <%= song.released %>
+            <%= f.label "Year: " %>
+            <%= song.release_year %><br>
+            <%= f.submit "Update #{song.title}"%>
+    <% end %> 
+        <%= form_tag song_path(song.id), method: :delete, data: { confirm: "Really?" } do %>
+              <%= submit_tag "Delete #{song.title}" %>
+        <% end %>
+          </td>
+        </tr>
+          <br>
+        </tbody>
+    </table>
   <% end %>
-<% end %>
-
-
-
-<% @songs.each do |song| %>
-<div class="song">
-  <span><%= song.title %></span>
-  <%= link_to "Delete", song, method: :delete, data: { confirm: "Really?" } %>
 </div>
-<% end %>

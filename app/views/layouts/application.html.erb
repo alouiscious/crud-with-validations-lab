@@ -9,6 +9,12 @@
 <body>
 
 <%= yield %>
-
+<br>
+<br>
+  <div class="nav">
+    <%= link_to "All Songs", ('/') %>  | 
+    <%= link_to "New Song", new_song_path %> | 
+    <%= link_to 'View', songs_path %>
+  </div>
 </body>
 </html>

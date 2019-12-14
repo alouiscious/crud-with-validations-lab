@@ -1,0 +1,32 @@
+<div class="song">
+
+  <h1>Song Release:</h1>
+  <%= form_for(@song) do |f| %>
+  <h2><%= @song.title %></h2>
+  <table>
+    <th><%= f.label :artist_name %></th> 
+    <th><%= f.label :genre %></th>
+    <th>Released </th>
+    <th><%= f.label :release_year %></th>
+
+    <tr>
+      <td><%= @song.artist_name %></td>
+      <td><%= @song.genre %></td>
+      <td><%= @song.released %></td>
+      <td><%= @song.release_year %></td>
+    </tr>
+
+    <tr>
+      <td><%= f.submit "Update #{@song.title}"%></td>
+    <%= form_tag song_path(@song.id), method: :delete, data: { confirm: "Really?" } do %>
+      <td><%= submit_tag "Delete #{@song.title}" %></td>
+    <% end %> 
+      
+    </tr>
+  <% end %>
+
+  </table>
+</div>
+ 
+
+
