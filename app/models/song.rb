@@ -9,7 +9,7 @@ class Song < ActiveRecord::Base
 
   with_options if: :released? do |release|
     release.validates :release_year, presence: true
-    release.validates :release_year, uniqueness: true
+    # release.validates :release_year, uniqueness: true
     release.validates :release_year, numericality: {
       less_than_or_equal_to: Date.today.year
     }
